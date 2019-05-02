@@ -1,20 +1,27 @@
 "use strict";
 let money, time;
-money = + prompt("Ваш бюджет на месяц?","0");
-time = prompt("Введите дату в формате YYYY-MM-DD","");
+money = prompt("Ваш бюджет на месяц?","0");
+time = +prompt("Введите дату в формате YYYY-MM-DD","");
 let appData = {
-    money: money,
+    budget: money,
     timeData: time,
-    expenses,
-    optinalExpanses,
+    expenses: {
+        article: "",
+        money: 0
+    },
+    optinalExpanses: 0,
     income: [],
     saving: false
 };
+console.log("ok");
+appData.expenses.article = prompt("Введите обязательную статью расходов в этом месяц","");
+appData.expenses.money = +prompt("Во сколько обойдется?","0");
 
-appData.expenses[0].article = prompt("Введите обязательную статью расходов в этом месяц","");
-appData.expenses[0].money = +prompt("Во сколько обойдется?","0");
+appData.budget-=appData.expenses.money;
 
-appData.expenses[1].article = prompt("Введите обязательную статью расходов в этом месяц","");
-appData.expenses[1].money = +prompt("Во сколько обойдется?","0");
+appData.expenses.article = prompt("Введите обязательную статью расходов в этом месяц","");
+appData.expenses.money = +prompt("Во сколько обойдется?","0");
 
-alert(appData.money-appData.expenses[0].money-appData.expenses[1].money);
+appData.budget-=appData.expenses.money;
+
+alert(appData.budget/30);

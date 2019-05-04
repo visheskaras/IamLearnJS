@@ -43,7 +43,7 @@ let appData = {
             console.log("Высокий уровень дохода")
         }
     },
-    checkSaving: function() {
+    checkSaving: function () {
         if (appData.saving === true) {
             let save = +prompt("Какова сумма накоплений"),
                 percent = +prompt("Под какой процент?");
@@ -51,26 +51,47 @@ let appData = {
             alert("Доход в месяц с вашего дипозита: " + appData.monthInCome);
         }
     },
-    chooseOptExpenses: function() {
-        for (let i = 0; i < 3; i++)
-        {
+    chooseOptExpenses: function () {
+        for (let i = 0; i < 3; i++) {
             let opt = prompt("Стать необязательных расходов?", "");
             appData.optinalExpanses[i] = opt;
         }
     },
     chooseIncome: function () {
         let items = prompt("Что принесет дополнительный доход?", "");
+        while (typeof (items) != "string" || items === "" || items == null) {
+            items = prompt("Что принесет дополнительный доход?", "");
+        }
         appData.income = items.split(", ");
-        appData.income.push(prompt("Может что-то еще?"));
+        let temp = prompt("Может что-то еще?");
+        if (typeof (temp) == "string" || temp != "" || temp != null) {
+             appData.income.push(temp); }
         appData.income.sort();
-    } 
+        let str = "Способы доп. зарботка: \n";
+        appData.income.forEach((item, i) => {
+            str += (i + 1) + ": " + item + "\n";
+        });
+        alert(str);
+    }
 };
+
+appData.chooseIncome();
+Output(appData);
+
+function Output(obj) {
+    for (let key in obj) {
+        if (typeof(obj[key]) == "object") {
+            console.log(key + ":");
+            Output(obj[key]);
+        } else {
+            console.log(key + ": "+ obj[key]);
+        }
+    }
+}
+
 
 //appData.chooseExpanses();
 
 //appData.detectDayBudget();
 
 //appData.detectLevel();
-
-
-

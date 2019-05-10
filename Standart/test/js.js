@@ -1,16 +1,29 @@
-// let timerId = setTimeout(sayHello, 3000);
-// clearTimeout(timerId);
+// class User {
+//     constructor(name, id) {
+//     this.name = name;
+//     this.id = id;
+//     this.human = true;    
+// }
+//     hello() {
+//         console.log(`Hello ${this.name}`);
+//     }
+//     exit(name) {
+//         console.log('Пользователь ' + this.name + ' ушел');
+//     }
 
-// let timerId = setInterval(sayHello, 3000);
-// clearInterval(timerId);
-
-// function sayHello () {
-//     alert ('Hello world');
 // }
 
-let timerId = setTimeout(function log() {
-    console.log("Hello");
-    setTimeout(log, 2000);
-});
 
-clearTimeout(timerId);
+
+// let ivan = new User('Ivan', 25),
+//     alex = new User('Alex',20);
+// ivan.hello();
+
+// console.log(ivan);
+// console.log(alex);
+// ivan.hello();
+'use strict';
+function showthis() {
+    console.log(this);
+}
+showthis();
